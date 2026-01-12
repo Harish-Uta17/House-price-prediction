@@ -8,7 +8,7 @@
 An end-to-end Machine Learning web application that predicts California house prices using advanced regression models. Designed as a production-ready ML system with feature engineering, model comparison, API readiness, and scalable deployment.
 
 ## 🌐 Live Demo
-https://your-app-name.streamlit.app
+https://house-price-prediction-tvarqbmfcdfpmbj8nuacge.streamlit.app/
 
 ## 🧠 Business Problem
 Real estate pricing is complex due to multiple socio-economic and geographical factors. Manual price estimation often leads to inaccurate, inconsistent, and biased results. This platform automates property valuation using Machine Learning to provide data-driven price estimation, consistent valuation logic, faster decision making for buyers and sellers, and scalable pricing analytics for real estate firms.
