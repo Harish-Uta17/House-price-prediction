@@ -1,37 +1,49 @@
-Environments
-
+############################
+# Python environments
+############################
 venv/
 .venv/
 env/
-.env
+.env/
 
-Python Bytecode & Cache
-
-pycache/
+############################
+# Python cache / bytecode
+############################
+__pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
 *.so
 
-Distribution / Packaging
-
-dist/
+############################
+# Build / packaging
+############################
 build/
+dist/
 *.egg-info/
 *.egg
 
-IDEs & System
-
+############################
+# IDEs / OS files
+############################
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
 .ipynb_checkpoints/
 
---- MODIFIED: ALLOW MODELS ---
+############################
+# Data artifacts (IGNORE)
+############################
+data/
+*.npy
+*.csv
 
-We use '!' to tell Git specifically NOT to ignore these files
-
-!models/.pkl
-!models/.txt
+############################
+# Models (ALLOW via LFS)
+############################
+!models/
+!models/*.pkl
+!models/*.joblib
+!models/*.txt
