@@ -17,324 +17,253 @@ st.set_page_config(
 # Custom CSS for beautiful design
 st.markdown("""
 <style>
-    /* Main background with gradient */
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&display=swap');
+
+    :root {
+        --navy: #0f172a;
+        --indigo: #1d4ed8;
+        --teal: #0891b2;
+        --amber: #f59e0b;
+        --text: #0b1220;
+        --muted: #546177;
+        --panel: rgba(255, 255, 255, 0.84);
+        --panel-border: rgba(15, 23, 42, 0.08);
+    }
+
     .stApp {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background:
+            radial-gradient(circle at 12% 10%, rgba(8, 145, 178, 0.30), transparent 34%),
+            radial-gradient(circle at 88% 15%, rgba(245, 158, 11, 0.28), transparent 34%),
+            linear-gradient(140deg, #f5fbff 0%, #eef6fb 50%, #fef6ec 100%);
+        color: var(--text);
+        font-family: "Manrope", "Segoe UI", sans-serif;
     }
-    
-    /* Main container */
-    .main-container {
-        background: white;
-        border-radius: 20px;
-        padding: 2rem;
-        margin: 1rem auto;
-        max-width: 1400px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    }
-    
-    /* Header styling */
+
     .main-header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(125deg, #0f172a 0%, #1e3a8a 45%, #0369a1 100%);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 24px;
         padding: 3rem 2rem;
-        border-radius: 15px;
-        text-align: center;
-        color: white;
-        margin-bottom: 2rem;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .main-header::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -10%;
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-        animation: pulse 3s infinite;
-    }
-    
-    @keyframes pulse {
-        0%, 100% { transform: scale(1); opacity: 0.5; }
-        50% { transform: scale(1.1); opacity: 0.8; }
-    }
-    
-    .main-header h1 {
-        font-size: 3rem;
-        margin-bottom: 0.5rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        position: relative;
-        z-index: 1;
-    }
-    
-    .main-header p {
-        font-size: 1.3rem;
-        opacity: 0.95;
-        position: relative;
-        z-index: 1;
-    }
-    
-    .model-badge {
-        background: rgba(255,255,255,0.25);
-        padding: 0.7rem 1.5rem;
-        border-radius: 12px;
-        margin-top: 1rem;
-        display: inline-block;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255,255,255,0.4);
-        font-size: 1.05rem;
-        position: relative;
-        z-index: 1;
-    }
-    
-    /* Info box with card design */
-    .info-card {
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        padding: 2rem;
-        border-radius: 15px;
-        margin-bottom: 2.5rem;
-        border-left: 5px solid #667eea;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        transition: transform 0.3s;
-    }
-    
-    .info-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-    }
-    
-    .info-card h3 {
-        color: #667eea;
-        margin-bottom: 1rem;
-        font-size: 1.4rem;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .info-card ul {
-        margin-left: 1.5rem;
-        color: #555;
-        line-height: 1.8;
-    }
-    
-    .info-card li {
-        margin: 8px 0;
-        font-size: 1.05rem;
-    }
-    
-    .info-card li strong {
-        color: #333;
-    }
-    
-    /* Section headers */
-    .section-header {
-        color: #333;
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin: 2rem 0 1.5rem 0;
-        padding-bottom: 0.5rem;
-        border-bottom: 3px solid #667eea;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-    
-    /* Input field container */
-    .input-container {
-        background: #f8f9fa;
-        padding: 1.5rem;
-        border-radius: 12px;
         margin-bottom: 1.5rem;
-        border: 2px solid #e9ecef;
-        transition: all 0.3s;
+        color: #f8fafc;
+        text-align: center;
+        box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+        overflow: hidden;
+        position: relative;
     }
-    
-    .input-container:hover {
-        border-color: #667eea;
-        background: white;
-        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+
+    .main-header::before,
+    .main-header::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(8px);
+        z-index: 0;
     }
-    
-    /* Input labels */
-    .input-label {
-        color: #333;
+
+    .main-header::before {
+        width: 260px;
+        height: 260px;
+        background: rgba(14, 165, 233, 0.28);
+        top: -80px;
+        right: -40px;
+    }
+
+    .main-header::after {
+        width: 180px;
+        height: 180px;
+        background: rgba(245, 158, 11, 0.22);
+        bottom: -60px;
+        left: -30px;
+    }
+
+    .main-header h1,
+    .main-header p,
+    .model-badge {
+        position: relative;
+        z-index: 1;
+    }
+
+    .main-header h1 {
+        font-family: "Sora", "Segoe UI", sans-serif;
+        font-size: 2.9rem;
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.5rem;
+    }
+
+    .main-header p {
         font-size: 1.15rem;
-        font-weight: 600;
+        color: #dbeafe;
+    }
+
+    .model-badge {
+        display: inline-block;
+        margin-top: 1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        padding: 0.55rem 1.15rem;
+        font-size: 0.95rem;
+        backdrop-filter: blur(6px);
+    }
+
+    .info-card {
+        background: var(--panel);
+        border: 1px solid var(--panel-border);
+        border-radius: 18px;
+        padding: 1.5rem 1.7rem;
+        margin-bottom: 2rem;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+    }
+
+    .info-card h3 {
+        color: var(--navy);
+        font-family: "Sora", "Segoe UI", sans-serif;
+        font-size: 1.22rem;
         margin-bottom: 0.8rem;
-        display: flex;
-        align-items: center;
-        gap: 10px;
     }
-    
-    .input-label .emoji {
-        font-size: 1.8rem;
+
+    .info-card ul {
+        margin: 0;
+        padding-left: 1.15rem;
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 0.98rem;
     }
-    
-    /* Streamlit input styling */
+
+    .section-header {
+        font-family: "Sora", "Segoe UI", sans-serif;
+        color: var(--navy);
+        font-size: 1.65rem;
+        font-weight: 800;
+        margin: 1.4rem 0 1.1rem;
+        letter-spacing: -0.02em;
+    }
+
+    .input-label {
+        color: var(--text);
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 0.45rem 0 0.35rem;
+    }
+
+    .stNumberInput {
+        background: rgba(255, 255, 255, 0.94);
+        border-radius: 14px;
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        padding: 0.3rem 0.55rem;
+        box-shadow: 0 5px 16px rgba(15, 23, 42, 0.05);
+        margin-bottom: 0.8rem;
+    }
+
+    .stNumberInput:focus-within {
+        border-color: rgba(37, 99, 235, 0.45);
+        box-shadow: 0 8px 20px rgba(29, 78, 216, 0.14);
+        transform: translateY(-1px);
+    }
+
     .stNumberInput > div > div > input {
-        background: white !important;
-        border: 2px solid #dee2e6 !important;
-        border-radius: 10px !important;
-        padding: 1rem !important;
-        font-size: 1.1rem !important;
-        font-weight: 500 !important;
-        transition: all 0.3s !important;
+        border: none !important;
+        background: transparent !important;
+        color: var(--text) !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
     }
-    
-    .stNumberInput > div > div > input:focus {
-        border-color: #667eea !important;
-        background: white !important;
-        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15) !important;
-        transform: translateY(-2px);
-    }
-    
-    .stNumberInput > div > div > input:hover {
-        border-color: #667eea !important;
-    }
-    
-    /* Button styling */
+
     .stButton > button {
         width: 100%;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-        color: white !important;
-        padding: 1.2rem 3rem !important;
-        border-radius: 12px !important;
+        margin-top: 1.2rem !important;
         border: none !important;
-        font-size: 1.3rem !important;
+        border-radius: 16px !important;
+        padding: 0.95rem 1.25rem !important;
+        font-family: "Sora", "Segoe UI", sans-serif !important;
+        font-size: 1.06rem !important;
         font-weight: 700 !important;
-        transition: all 0.3s !important;
-        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4) !important;
-        margin-top: 2rem !important;
+        letter-spacing: 0.01em;
+        color: #f8fafc !important;
+        background: linear-gradient(120deg, #1d4ed8 0%, #0369a1 60%, #0f766e 100%) !important;
+        box-shadow: 0 12px 25px rgba(29, 78, 216, 0.28) !important;
+        transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease !important;
     }
-    
+
     .stButton > button:hover {
-        transform: translateY(-3px) !important;
-        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6) !important;
+        transform: translateY(-2px) !important;
+        filter: saturate(1.08);
+        box-shadow: 0 16px 34px rgba(8, 145, 178, 0.32) !important;
     }
-    
-    .stButton > button:active {
-        transform: translateY(-1px) !important;
-    }
-    
-    /* Result box */
+
     .result-box {
-        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-        padding: 3rem;
-        border-radius: 15px;
+        margin: 1.6rem 0 0.6rem;
+        border-radius: 18px;
+        padding: 2.1rem 1.2rem;
         text-align: center;
-        color: white;
-        margin: 2.5rem 0;
-        box-shadow: 0 15px 40px rgba(17, 153, 142, 0.4);
-        animation: slideIn 0.6s ease;
-        position: relative;
-        overflow: hidden;
+        color: #f8fafc;
+        background: linear-gradient(120deg, #0f172a 0%, #155e75 55%, #f59e0b 145%);
+        box-shadow: 0 18px 44px rgba(15, 23, 42, 0.27);
+        animation: revealUp 420ms ease;
     }
-    
-    .result-box::before {
-        content: '✨';
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 3rem;
-        animation: sparkle 2s infinite;
-    }
-    
-    @keyframes sparkle {
-        0%, 100% {
-            transform: scale(1) rotate(0deg);
-            opacity: 0.6;
-        }
-        50% {
-            transform: scale(1.3) rotate(180deg);
-            opacity: 1;
-        }
-    }
-    
+
     .result-box h2 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        margin: 0;
+        font-size: 1.3rem;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        opacity: 0.95;
     }
-    
+
     .result-box .price {
-        font-size: 4rem;
-        font-weight: 900;
-        text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
-        animation: countUp 0.8s ease;
-        letter-spacing: 2px;
+        margin-top: 0.5rem;
+        font-family: "Sora", "Segoe UI", sans-serif;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
     }
-    
-    @keyframes countUp {
-        from {
-            opacity: 0;
-            transform: scale(0.3);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-    
-    @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translateY(-30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    /* Footer */
+
     .footer {
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        padding: 2rem;
-        border-radius: 12px;
+        margin-top: 2.4rem;
         text-align: center;
-        color: #666;
-        margin-top: 3rem;
-        border-top: 3px solid #667eea;
-        font-size: 1.05rem;
+        color: #5b6679;
+        font-size: 0.95rem;
+        padding: 1.1rem 0.5rem;
+        border-top: 1px dashed rgba(15, 23, 42, 0.18);
     }
-    
-    .footer p {
-        margin: 8px 0;
+
+    @keyframes revealUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
-    
-    .footer .heart {
-        color: #ff6b6b;
-        animation: heartbeat 1.5s infinite;
-        font-size: 1.2rem;
-    }
-    
-    @keyframes heartbeat {
-        0%, 100% { transform: scale(1); }
-        10%, 30% { transform: scale(1.15); }
-        20%, 40% { transform: scale(1); }
-    }
-    
-    /* Hide Streamlit branding */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    
-    /* Container styling */
+
+    #MainMenu { visibility: hidden; }
+    footer { visibility: hidden; }
+
     .block-container {
-        padding: 2rem 3rem !important;
-        max-width: 1400px !important;
+        max-width: 1180px !important;
+        padding: 1.2rem 1.1rem 2.2rem !important;
     }
-    
-    /* Column spacing */
+
     [data-testid="column"] {
-        padding: 0 1rem;
+        padding: 0 0.6rem;
     }
-    
-    /* Spinner */
+
     .stSpinner > div {
-        border-top-color: #667eea !important;
+        border-top-color: var(--amber) !important;
+    }
+
+    @media (max-width: 768px) {
+        .main-header {
+            padding: 2rem 1.2rem;
+            border-radius: 18px;
+        }
+
+        .main-header h1 {
+            font-size: 2rem;
+        }
+
+        .section-header {
+            font-size: 1.3rem;
+        }
     }
 </style>
 """, unsafe_allow_html=True)
@@ -350,10 +279,10 @@ model_name = predictor.model_name
 # Header
 st.markdown(f"""
 <div class="main-header">
-    <h1>🏠 House Price Prediction System</h1>
-    <p>ML-Powered Real Estate Valuation</p>
+    <h1>House Price Intelligence Suite</h1>
+    <p>AI-driven California property valuation for faster pricing decisions</p>
     <div class="model-badge">
-        <strong>Current Model:</strong> {model_name}
+        Current Model: <strong>{model_name}</strong>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -361,53 +290,51 @@ st.markdown(f"""
 # Info Card
 st.markdown("""
 <div class="info-card">
-    <h3>📊 Input Guidelines</h3>
+    <h3>Input Guidelines</h3>
     <ul>
-        <li><strong>Median Income:</strong> In tens of thousands (e.g., 3.5 = $35,000)</li>
-        <li><strong>House Age:</strong> Age of the house in years</li>
-        <li><strong>Avg Rooms:</strong> Average number of rooms per household</li>
-        <li><strong>Avg Bedrooms:</strong> Average number of bedrooms per household</li>
-        <li><strong>Population:</strong> Block population</li>
-        <li><strong>Avg Occupancy:</strong> Average household members</li>
-        <li><strong>Latitude/Longitude:</strong> Geographic coordinates</li>
+        <li><strong>Median Income:</strong> Enter in tens of thousands, for example 3.5 means $35,000.</li>
+        <li><strong>House Age:</strong> Enter total age of nearby homes in years.</li>
+        <li><strong>Average Rooms and Bedrooms:</strong> Keep values realistic for your target locality.</li>
+        <li><strong>Population and Occupancy:</strong> Use neighborhood-level averages when possible.</li>
+        <li><strong>Latitude and Longitude:</strong> Accurate coordinates improve geographic pricing quality.</li>
     </ul>
 </div>
 """, unsafe_allow_html=True)
 
 # Section Header
-st.markdown('<div class="section-header">🏘️ Enter Property Details</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-header">Property Feature Inputs</div>', unsafe_allow_html=True)
 
 # Input Form with better layout
 col1, col2 = st.columns(2)
 
 with col1:
-    st.markdown('<div class="input-label"><span class="emoji">💰</span> Median Income (in $10k)</div>', unsafe_allow_html=True)
-    MedInc = st.number_input("", value=3.5, step=0.1, format="%.2f", key="medinc", label_visibility="collapsed")
+    st.markdown('<div class="input-label">Income Signal  Median Income (in $10k)</div>', unsafe_allow_html=True)
+    MedInc = st.number_input("Median Income", value=3.5, step=0.1, format="%.2f", key="medinc", label_visibility="collapsed")
     
-    st.markdown('<div class="input-label"><span class="emoji">🏗️</span> House Age (years)</div>', unsafe_allow_html=True)
-    HouseAge = st.number_input("", value=30.0, step=1.0, format="%.1f", key="houseage", label_visibility="collapsed")
+    st.markdown('<div class="input-label">Structure Age  House Age (years)</div>', unsafe_allow_html=True)
+    HouseAge = st.number_input("House Age", value=30.0, step=1.0, format="%.1f", key="houseage", label_visibility="collapsed")
     
-    st.markdown('<div class="input-label"><span class="emoji">🚪</span> Average Rooms</div>', unsafe_allow_html=True)
-    AveRooms = st.number_input("", value=5.0, step=0.1, format="%.1f", key="averrooms", label_visibility="collapsed")
+    st.markdown('<div class="input-label">Space Mix  Average Rooms</div>', unsafe_allow_html=True)
+    AveRooms = st.number_input("Average Rooms", value=5.0, step=0.1, format="%.1f", key="averrooms", label_visibility="collapsed")
     
-    st.markdown('<div class="input-label"><span class="emoji">🛏️</span> Average Bedrooms</div>', unsafe_allow_html=True)
-    AveBedrms = st.number_input("", value=1.0, step=0.1, format="%.1f", key="avebedrms", label_visibility="collapsed")
+    st.markdown('<div class="input-label">Room Ratio  Average Bedrooms</div>', unsafe_allow_html=True)
+    AveBedrms = st.number_input("Average Bedrooms", value=1.0, step=0.1, format="%.1f", key="avebedrms", label_visibility="collapsed")
 
 with col2:
-    st.markdown('<div class="input-label"><span class="emoji">👥</span> Population</div>', unsafe_allow_html=True)
-    Population = st.number_input("", value=1000.0, step=10.0, format="%.0f", key="population", label_visibility="collapsed")
+    st.markdown('<div class="input-label">Demand Density  Population</div>', unsafe_allow_html=True)
+    Population = st.number_input("Population", value=1000.0, step=10.0, format="%.0f", key="population", label_visibility="collapsed")
     
-    st.markdown('<div class="input-label"><span class="emoji">🏘️</span> Average Occupancy</div>', unsafe_allow_html=True)
-    AveOccup = st.number_input("", value=3.0, step=0.1, format="%.1f", key="aveoccup", label_visibility="collapsed")
+    st.markdown('<div class="input-label">Household Size  Average Occupancy</div>', unsafe_allow_html=True)
+    AveOccup = st.number_input("Average Occupancy", value=3.0, step=0.1, format="%.1f", key="aveoccup", label_visibility="collapsed")
     
-    st.markdown('<div class="input-label"><span class="emoji">🌍</span> Latitude</div>', unsafe_allow_html=True)
-    Latitude = st.number_input("", value=34.05, step=0.01, format="%.2f", key="latitude", label_visibility="collapsed")
+    st.markdown('<div class="input-label">Geo Northing  Latitude</div>', unsafe_allow_html=True)
+    Latitude = st.number_input("Latitude", value=34.05, step=0.01, format="%.2f", key="latitude", label_visibility="collapsed")
     
-    st.markdown('<div class="input-label"><span class="emoji">🧭</span> Longitude</div>', unsafe_allow_html=True)
-    Longitude = st.number_input("", value=-118.25, step=0.01, format="%.2f", key="longitude", label_visibility="collapsed")
+    st.markdown('<div class="input-label">Geo Easting  Longitude</div>', unsafe_allow_html=True)
+    Longitude = st.number_input("Longitude", value=-118.25, step=0.01, format="%.2f", key="longitude", label_visibility="collapsed")
 
 # Predict Button
-if st.button("🔮 Predict House Price"):
+if st.button("Estimate Market Price"):
     # Create input dataframe
     input_data = pd.DataFrame({
         'MedInc': [MedInc],
@@ -429,7 +356,7 @@ if st.button("🔮 Predict House Price"):
         # Display result with animation
         st.markdown(f"""
         <div class="result-box">
-            <h2>✨ Predicted House Price</h2>
+            <h2>Estimated Market Price</h2>
             <div class="price">${price:,.2f}</div>
         </div>
         """, unsafe_allow_html=True)
@@ -443,7 +370,7 @@ if st.button("🔮 Predict House Price"):
 # Footer
 st.markdown("""
 <div class="footer">
-    <p>Built with <span class="heart">❤️</span> using Streamlit & Machine Learning</p>
-    <p>© 2026 House Price Prediction System</p>
+    <p>Designed for modern valuation workflows with Streamlit and machine learning.</p>
+    <p>© 2026 House Price Intelligence Suite</p>
 </div>
 """, unsafe_allow_html=True)

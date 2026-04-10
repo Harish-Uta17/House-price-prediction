@@ -3,6 +3,7 @@
 ############################
 venv/
 .venv/
+.venv311/
 env/
 .env/
 
@@ -39,6 +40,7 @@ Thumbs.db
 data/
 *.npy
 *.csv
+backup_models/
 
 ############################
 # Models (ALLOW via LFS)
