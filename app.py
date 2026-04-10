@@ -221,6 +221,12 @@ st.markdown("""
         letter-spacing: -0.02em;
     }
 
+    .result-box .note {
+        margin-top: 0.35rem;
+        font-size: 0.95rem;
+        color: rgba(248, 250, 252, 0.82);
+    }
+
     .footer {
         margin-top: 2.4rem;
         text-align: center;
@@ -358,11 +364,9 @@ if st.button("Estimate Market Price"):
         <div class="result-box">
             <h2>Estimated Market Price</h2>
             <div class="price">${price:,.2f}</div>
+            <div class="note">Based on the current model inputs and trained regression pipeline.</div>
         </div>
         """, unsafe_allow_html=True)
-        
-        # Additional info
-        st.balloons()
         
     except Exception as e:
         st.error(f"⚠️ Error: {str(e)}")
